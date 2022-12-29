@@ -51,6 +51,7 @@ public class NC20_IP转换 {
         if (str.length() == 1) {
             return true;
         }
+        // todo ： 注意判定条件
         if (str.length() > 3) {
             return false;
         }
