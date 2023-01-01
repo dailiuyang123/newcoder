@@ -23,31 +23,29 @@ public class BM56 {
 
         LinkedList<Integer> path = new LinkedList<>();
         boolean[] used = new boolean[num.length];
-        List<String> temp = new ArrayList<>();
 
-        dfs(num, 0, path, used, temp);
+        dfs(num, 0, path, used);
         return res;
     }
 
-    public void dfs(int[] num, int index, LinkedList<Integer> path, boolean[] used, List<String> temp) {
+    public void dfs(int[] num, int index, LinkedList<Integer> path, boolean[] used) {
 
         if (path.size() == num.length) {
-            String string = path.toString();
-            if (!temp.contains(string)) {
-                res.add(new ArrayList<Integer>(path));
-                temp.add(string);
-            }
+            res.add(new ArrayList<>(path));
             return;
         }
 
-
-        for (int i = index; i < num.length; i++) {
+        for (int i = 0; i < num.length; i++) {
             if (used[i]) {
+                continue;
+            }
+            // 剪枝
+            if (i > 0 && (num[i - 1] == num[i]) && (!used[i - 1])) {
                 continue;
             }
             path.addLast(num[i]);
             used[i] = true;
-            dfs(num, index, path, used, temp);
+            dfs(num, i + 1, path, used);
             //回退
             path.removeLast();
             used[i] = false;
@@ -58,7 +56,7 @@ public class BM56 {
     public static void main(String[] args) {
 
         BM56 bm56 = new BM56();
-        int[] nums = {2,1,1};
+        int[] nums = {2, 1, 1};
         ArrayList<ArrayList<Integer>> arrayLists = bm56.permuteUnique(nums);
         System.out.println(arrayLists.toString());
 
