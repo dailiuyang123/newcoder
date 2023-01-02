@@ -3,7 +3,7 @@ package ClassicExam.dfs;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class BM55_M {
+public class BM55_没有重复数字的全排列 {
 
     /**
      * 没有重复项数字的全排列
@@ -66,7 +66,7 @@ public class BM55_M {
 
     public static void main(String[] args) {
 
-        BM55_M bm55_m = new BM55_M();
+        BM55_没有重复数字的全排列 bm55_m = new BM55_没有重复数字的全排列();
         int[] num = {1, 2, 3};
         ArrayList<ArrayList<Integer>> permute = bm55_m.permute(num);
 

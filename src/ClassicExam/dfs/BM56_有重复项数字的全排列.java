@@ -3,9 +3,8 @@ package ClassicExam.dfs;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
-import java.util.List;
 
-public class BM56 {
+public class BM56_有重复项数字的全排列 {
 
 
     /**
@@ -24,11 +23,11 @@ public class BM56 {
         LinkedList<Integer> path = new LinkedList<>();
         boolean[] used = new boolean[num.length];
 
-        dfs(num, 0, path, used);
+        dfs(num, path, used);
         return res;
     }
 
-    public void dfs(int[] num, int index, LinkedList<Integer> path, boolean[] used) {
+    public void dfs(int[] num, LinkedList<Integer> path, boolean[] used) {
 
         if (path.size() == num.length) {
             res.add(new ArrayList<>(path));
@@ -39,13 +38,13 @@ public class BM56 {
             if (used[i]) {
                 continue;
             }
-            // 剪枝
+            //  todo 剪枝
             if (i > 0 && (num[i - 1] == num[i]) && (!used[i - 1])) {
                 continue;
             }
             path.addLast(num[i]);
             used[i] = true;
-            dfs(num, i + 1, path, used);
+            dfs(num, path, used);
             //回退
             path.removeLast();
             used[i] = false;
@@ -55,7 +54,7 @@ public class BM56 {
 
     public static void main(String[] args) {
 
-        BM56 bm56 = new BM56();
+        BM56_有重复项数字的全排列 bm56 = new BM56_有重复项数字的全排列();
         int[] nums = {2, 1, 1};
         ArrayList<ArrayList<Integer>> arrayLists = bm56.permuteUnique(nums);
         System.out.println(arrayLists.toString());
