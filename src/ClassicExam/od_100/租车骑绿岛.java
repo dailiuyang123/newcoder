@@ -1,4 +1,4 @@
-package ClassicExam.od;
+package ClassicExam.od_100;
 
 import java.util.Arrays;
 import java.util.Scanner;

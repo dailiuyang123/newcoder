@@ -1,6 +1,4 @@
-package ClassicExam.od;
-
-import ClassicExam.other.NC144;
+package ClassicExam.od_100;
 
 import java.util.HashMap;
 import java.util.Map;
