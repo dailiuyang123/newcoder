@@ -2,7 +2,7 @@ package ClassicExam.od_100;
 
 import java.util.Scanner;
 
-public class 最大报酬_01背包_Undo {
+public class 最大报酬_01背包_Undo_背会 {
 
     /**
      * 题目描述

@@ -3,7 +3,7 @@ package ClassicExam.od_100;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class 等和子数字最小和 {
+public class 等和子数字最小和_背会 {
 
     /**
      * 给定一个数组 nums,将元素分为若干个组，使得每组和相等
