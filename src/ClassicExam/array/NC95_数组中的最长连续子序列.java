@@ -8,6 +8,9 @@ public class NC95_数组中的最长连续子序列 {
 
 
     /**
+     * 给定无序数组arr，返回其中最长的连续序列的长度
+     * (要求值连续，位置可以不连续,例如 3,4,5,6为连续的自然数）
+     *
      * https://www.nowcoder.com/practice/eac1c953170243338f941959146ac4bf?tpId=196&tqId=37143&rp=1&ru=/exam/oj&qru=/exam/oj&sourceUrl=/exam/oj?tab=%25E7%25AE%2597%25E6%25B3%2595%25E7%25AF%2587&topicId=196&page=1&tags=5166&difficulty=undefined&judgeStatus=undefined&tags=5166&title=
      */
 

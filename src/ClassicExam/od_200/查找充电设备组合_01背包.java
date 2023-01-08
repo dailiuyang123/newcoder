@@ -2,7 +2,7 @@ package ClassicExam.od_200;
 
 import java.util.*;
 
-public class 查找充电设备组合 {
+public class 查找充电设备组合_01背包 {
 
     /**
      * 题目描述
@@ -42,8 +42,11 @@ public class 查找充电设备组合 {
         boolean[] used = new boolean[n];
         dfs(powers, p_max, 0, used);
         Collections.sort(res);
+        System.out.println(System.currentTimeMillis());
         System.out.println(res.get(res.size() - 1));
-
+        System.out.println(System.currentTimeMillis());
+        System.out.println(getRs(powers, n, p_max));
+        System.out.println(System.currentTimeMillis());
     }
 
     /**
@@ -51,16 +54,24 @@ public class 查找充电设备组合 {
      */
     public static int getRs(int[] nums, int n, int p_max) {
 
+        // 首先声明一个 二维数组，rows 代表物品，cols 代表背包的容量，长度各加一
         int[][] dp = new int[n + 1][p_max + 1];
 
+        // 外层 遍历 物品
         for (int i = 0; i <= n; i++) {
 
+            // 内层遍历容量
             for (int j = 0; j <= p_max; j++) {
 
                 if (i == 0 || j == 0) {
                     continue;
                 }
-
+                // 背包解决，则把充电设备的功率，分别看为，重量，和价值
+                // int w = nums[i-1]
+                // int p = nums[i-1]
+                // 状态转移公式：
+                //  dp[i][j]=Math.max(  dp[i-1][j]  ,  p + dp[i-1][j-w]  )
+                //
                 // nums[i-1] 充电设备功率，大于当前允许的功率，继承上一个合法充电设备
                 if (nums[i - 1] > j) {
                     dp[i][j] = dp[i - 1][j];

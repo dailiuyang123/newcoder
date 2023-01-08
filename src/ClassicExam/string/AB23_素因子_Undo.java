@@ -2,7 +2,7 @@ package ClassicExam.string;
 
 import java.util.Scanner;
 
-public class AB23_素因子 {
+public class AB23_素因子_Undo {
 
 
     /**
