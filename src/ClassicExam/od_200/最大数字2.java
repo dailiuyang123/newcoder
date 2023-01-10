@@ -1,9 +1,6 @@
 package ClassicExam.od_200;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class 最大数字2 {
 
@@ -28,52 +25,107 @@ public class 最大数字2 {
      * 输出	4533
      *
      */
+    public static List<Integer> resList = new ArrayList<>();
+    public static String[] inputStrs;
+
     public static void main(String[] args) {
-        // 输入处理
-        Scanner in = new Scanner(System.in);
-        String string1 = in.nextLine();
-        int[] nums = new int[string1.length()];
-        for(int i=0; i<string1.length(); i++){
-            nums[i] =string1.charAt(i) - 48;
+
+        Scanner sc = new Scanner(System.in);
+
+        inputStrs = sc.nextLine().split("");
+
+        Map<String, Integer> map = new HashMap<>();
+
+        for(int i=0; i<inputStrs.length; i++){  //求出所有数字的出现次数
+            map.put( inputStrs[i], map.getOrDefault(inputStrs[i], 0) + 1);
         }
 
-        get_max_number(nums);
+        List<String> list = new ArrayList<>();
+        for(Map.Entry<String,Integer> m : map.entrySet()){
+            String num = m.getKey();
+            list.add(num);
+            if(m.getValue() >= 2){  //次数大于等于2只记两次
+                list.add(num);
+            }
+        }
+
+        String[] strsNum = new String[list.size()];
+        list.toArray(strsNum);      //集合转化为数组
+        combine( strsNum,0, strsNum.length-1);
+        Collections.sort(resList);
+
+        System.out.println(resList.get(resList.size()-1));
+
     }
 
-    // 字符串去重后个数
-    public static void get_max_number(int[] nums) {
-        // 统计出现次数 + 已经使用的次数
-        HashMap<Integer,Integer> cnt = new HashMap<Integer,Integer>();
-        HashMap<Integer,Integer> st_cnt = new HashMap<Integer,Integer>();
+    public static void swap(String[] strings, int indexa, int indexb){
 
-        for (int v : nums) {
-            Integer num = cnt.get(v);
-            cnt.put(v, num == null ? 1 : num + 1);
-        }
+        String temp = strings[indexa];
+        strings[indexa] = strings[indexb];
+        strings[indexb] = temp;
 
-        // 栈
-        List<Integer> res = new ArrayList<Integer>();
-        res.add(-1);
-        for (int x : nums) {
-            // 已经使用2次，直接跳过
-            if (st_cnt.containsKey(x) && st_cnt.get(x) == 2) {
-                cnt.put(x, cnt.get(x)-1);
-                continue;
+    }
+
+    /**
+     * 对存在的数字进行全排列，找出其中最大的值
+     * @param strs      存在数字数组
+     * @param start     进行交换的index
+     * @param end       数组的最后一个index
+     */
+    public static void combine(String[] strs, int start, int end){
+
+        if(start == end){
+            String numStr = "";
+            for (String s : strs){
+                numStr += s;    //将数组中的数字进行拼接
             }
-            // 当前数字大于栈尾数字，且栈尾数字出现超过2次
-            while (x > res.get(res.size() - 1) && cnt.containsKey(res.get(res.size() - 1)) &&  cnt.get(res.get(res.size() - 1)) > 2) {
-                cnt.put(res.get(res.size() - 1), cnt.get(res.get(res.size() - 1))-1);
-                st_cnt.put(res.get(res.size() - 1), st_cnt.get(res.get(res.size() - 1))-1);
-                res.remove(res.size() - 1);
+            if(!resList.contains(Integer.valueOf(numStr)) && isChild(strs)){    //剔除满足子串且存在的数字
+                resList.add(Integer.valueOf(numStr));
             }
-            res.add(x);
-            Integer num = st_cnt.get(x);
-            st_cnt.put(x, num == null ? 1 : num + 1);
+        }else {
+            for(int i=start; i<strs.length; i++){
+                if(i != start && strs[i].equals(strs[start])){  //用来交换的索引不同且数字相等则重复
+                    continue;
+                }
+                swap(strs, i, start);
+                if(strs[0].equals("0")){
+                    continue;   //首位为0不满足
+                }
+                combine(strs,start+1, end);
+                swap(strs, i, start);
+            }
+        }
+    }
+
+    /**
+     * 判断数组是否为输入数组的子串
+     * @param child
+     * @return
+     */
+    public static boolean isChild(String[] child){
+
+        int index = 0;  //父数组索引
+        boolean isOver = false;     //父数组是否遍历结束
+        int count = 0;
+        for(int i=0; i<child.length; i++){
+            String str = child[i];
+            for(int j = index; j<inputStrs.length; j++){
+                String temp = inputStrs[j];
+                if(j == inputStrs.length-1){
+                    isOver = true;  //父数组遍历结束了
+                }
+                if(temp.equals(str)){
+                    index = j + 1;  //存在该字符，则更新count
+                    count ++;
+                    break;
+                }
+            }
+            if(isOver){    //父数组遍历完成且index没有刷新
+                break;
+            }
         }
 
-        for (int i = 1; i < res.size(); i++) {
-            System.out.print(res.get(i));
-        }
+        return count == child.length;
     }
 
 
