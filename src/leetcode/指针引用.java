@@ -1,5 +1,7 @@
 package leetcode;
 
+import java.util.Collection;
+
 public class 指针引用 {
 
     public static void main(String[] args) {

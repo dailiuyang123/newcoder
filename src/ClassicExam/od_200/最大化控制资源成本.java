@@ -1,6 +1,7 @@
 package ClassicExam.od_200;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Scanner;
 
 public class 最大化控制资源成本 {
@@ -58,7 +59,7 @@ public class 最大化控制资源成本 {
             int l = tasks[i][0];
             int r = tasks[i][1];
 
-            for (int j = l; j <= r; j++) {
+            for (int j = l; j < r; j++) {
                 times[j] += tasks[i][2];
             }
         }

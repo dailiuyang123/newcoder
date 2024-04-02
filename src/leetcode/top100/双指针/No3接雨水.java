@@ -14,23 +14,22 @@ public class No3接雨水 {
 
     }
 
-    public int trap(int[] height) {
-
-        int sum = 0;
-
-        if (height.length < 3) {
-            return sum;
-        }
-
-        LinkedList<Integer> stack = new LinkedList<>();
-        stack.push(height[0]);
-        for (int i = 1; i < height.length; i++) {
-            int next = height[i];
-
-
-
-        }
-
-
-    }
+//    public int trap(int[] height) {
+//
+//        int sum = 0;
+//
+//        if (height.length < 3) {
+//            return sum;
+//        }
+//
+//        LinkedList<Integer> stack = new LinkedList<>();
+//        stack.push(height[0]);
+//        for (int i = 1; i < height.length; i++) {
+//            int next = height[i];
+//
+//
+//        }
+//
+//
+//    }
 }
