@@ -15,21 +15,21 @@ public class OD098字符串解密 {
 					**/
 				public static void main(String[] args) {
 								
-								Scanner in =new Scanner(System.in);
+								Scanner in = new Scanner(System.in);
 								String s1 = in.nextLine();
 								String s2 = in.nextLine();
 								int length = length(s2);
 								
-								String regx="[0-9|a-f]+";
+								String regx = "[0-9|a-f]+";
 								
-								List<String> res=new ArrayList<>();
+								List<String> res = new ArrayList<>();
 								String[] split = s1.split(regx);
 								for (String s : split) {
-												if(s.length()>0 && length(s)<=length){
+												if (s.length() > 0 && length(s) <= length) {
 																res.add(s);
 												}
 								}
-								if(res.isEmpty()){
+								if (res.isEmpty()) {
 												System.out.println("Not Found");
 												return;
 								}
@@ -47,11 +47,11 @@ public class OD098字符串解密 {
 				}
 				
 				
-				public static int length(String temp){
-								HashSet<Character> s2Set=new HashSet<>();
+				public static int length(String temp) {
+								HashSet<Character> s2Set = new HashSet<>();
 								for (int i = 0; i < temp.length(); i++) {
 												s2Set.add(temp.charAt(i));
 								}
-							return 	s2Set.size();
+								return s2Set.size();
 				}
 }

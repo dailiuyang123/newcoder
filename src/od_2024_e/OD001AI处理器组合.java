@@ -14,7 +14,7 @@ public class OD001AI处理器组合 {
 				public static void main(String[] args) {
 								Scanner in = new Scanner(System.in);
 								String s = in.nextLine();
-								if(s.equals("[]")){
+								if (s.equals("[]")) {
 												System.out.println("[]");
 												return;
 								}
