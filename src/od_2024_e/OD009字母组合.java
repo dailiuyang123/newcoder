@@ -32,7 +32,7 @@ public class OD009字母组合 {
 								map.put('9', "yx");
 								
 								
-								dfs(s, 0, new boolean[s.length()], new ArrayDeque<Character>());
+								dfs(s, 0, new boolean[10][10], new ArrayDeque<Character>());
 								StringBuilder sb = new StringBuilder();
 								for (String re : res) {
 												sb.append(re).append(",");
@@ -40,32 +40,33 @@ public class OD009字母组合 {
 								System.out.println(sb.toString());
 				}
 				
-				public static void dfs(String s, int index, boolean[] used, ArrayDeque<Character> path) {
+				public static void dfs(String s, int index, boolean[][] used, ArrayDeque<Character> path) {
 								if (index == s.length()) {
 												StringBuilder sb = new StringBuilder();
 												for (Character c : path) {
 																sb.append(c);
 												}
 												sb.reverse();
-												if (!sb.toString().contains(ux)||true) {
+												if (!sb.toString().contains(ux) || true) {
 																res.add(sb.toString());
 												}
 												return;
 								}
 								
-								
+								if (used[index][i]) {  // 深度
+												return;
+								}
 								String val = map.get(s.charAt(index));
 								for (int i = 0; i < val.length(); i++) {
-												if (used[index]) {
-																continue;
-												}
+											
 												path.push(val.charAt(i));
-												used[index] = true;
+												used[index][i] = true;
 												index++;
 												dfs(s, index, used, path);
 												path.pop();
 												index--;
-												used[index] = false;
+												used[index][i] = false;
+											
 								}
 								
 				}
