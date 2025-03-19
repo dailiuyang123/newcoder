@@ -3,7 +3,7 @@ package od_2024_e.回溯;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class 平衡天使游戏 {
+public class 平衡天使游戏_球桶问题 {
 				static int[] jobs;
 				
 				/**
@@ -49,12 +49,13 @@ public class 平衡天使游戏 {
 				// 正确答案：
 				// 循环桶，将每个球找到最合适的桶里
 				public static boolean dfs(int curr, int capacity, int[] buckets) {
+							 // 当前球的下标 == 球数组，说明已经放完。
 								if (curr == jobs.length) {
 												return true;
 								}
 								
 								int job = jobs[curr];
-								
+								// ToDo 遍历桶，如果放不下，自动循环到一个桶。
 								for (int i = 0; i < buckets.length; i++) {
 												if (i > 0 && buckets[i] == buckets[i - 1]) {
 																continue;
