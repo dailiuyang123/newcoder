@@ -42,8 +42,9 @@ public class OD26日志采集系统_DP {
 								
 								// todo i=1 从第二条日志开始
 								for (int i = 1; i < l; i++) {
-												// todo 日志超过100必须上报
+												// 日志超过100必须上报
 												dp[i] = Math.min(100, dp[i - 1] + logs[i]);
+												// todo 每超时1秒就会扣分，所以T1 会重复扣分（如果不提交）
 												delay[i] = delay[i - 1] + dp[i - 1];
 												
 												max_score=Math.max(max_score,dp[i]-delay[i]);
