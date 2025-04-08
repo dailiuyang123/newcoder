@@ -3,7 +3,7 @@ package od_2024_e;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class OD31云短信平台优惠活动 {
+public class OD31云短信平台优惠活动_完全背包 {
 				/**
 					* 2025/4/2
 					* URL ：
@@ -30,8 +30,6 @@ public class OD31云短信平台优惠活动 {
 								int m = Integer.valueOf(in.nextLine());
 								int[] prices = Arrays.stream(in.nextLine().split(" ")).mapToInt(Integer::valueOf).toArray();
 								
-								// 假设 dp[i] 为 预算i下能获得最大值
-								// dp[i]=dp[i-1]+
 								int[] dp = new int[m + 1];
 								
 								for (int i = 0; i < prices.length; i++) {
