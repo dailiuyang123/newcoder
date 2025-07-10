@@ -35,12 +35,6 @@ public class OD34贪心的商人 {
 					* 3、说明
 					* 第一件商品： (2-1)*2 + (3-2)*2 
 					*
-					*
-					* 哪吒编程
-					*
-					* 微信公众号
-					*
-					* 领取学习资料、大厂面试真题、职业规划
 					**/
 				public static void main(String[] args) {
 				
