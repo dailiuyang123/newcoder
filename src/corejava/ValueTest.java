@@ -16,7 +16,8 @@ public class ValueTest {
 								sb.append(" world");
 								// 拷贝的引用指向新对象,原本引用值不变
 								sb = new StringBuilder("world");
-								System.out.println(sb);
+								// world
+								System.out.println("函数内部，复制sb引用指针："+sb);
 				}
 				
 				public static void valueInt(int a) {
@@ -28,6 +29,7 @@ public class ValueTest {
 								System.out.println("===============引用对象：拷贝引用地址=====================");
 								StringBuilder sb = new StringBuilder("hello");
 								valueStringBuilder(sb);
+								// hello world
 								System.out.println(sb);
 								
 								System.out.println("--------------------基本类型：值传递-----------------------------");
