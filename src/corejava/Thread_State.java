@@ -1,5 +1,12 @@
 package corejava;
 
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicStampedReference;
+import java.util.concurrent.locks.AbstractQueuedSynchronizer;
+
 public class Thread_State {
 				/**
 					* 2025/9/1
@@ -10,6 +17,7 @@ public class Thread_State {
 				public static void main(String[] args) throws InterruptedException {
 								// 获取当前JVM中的所有线程
 								Thread a = new A();
+								
 								Thread b = new A();
 								// 线程对象创建
 								System.out.println(a.getName() + ":" + a.getState());
@@ -29,6 +37,7 @@ public class Thread_State {
 								System.out.println("Main end:"+A.a+"------------------");
 								// 线程结束
 								System.out.println(a.getName() + ":" + a.getState());
+								HashMap<String, String> map = new HashMap<>();
 				}
 				
 				static class A extends Thread {
