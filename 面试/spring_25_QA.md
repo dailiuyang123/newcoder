@@ -288,6 +288,7 @@ public ResponseEntity<ApiError> handleException(Exception e) {
 - **spring - boot - starter - quartz**：若项目需要定时任务功能，可添加此依赖，用于整合 Quartz 定时任务框架，方便定义和管理定时任务。
 - **spring - boot - starter - mail**：支持 `javax.mail` 模块，可便捷地发送邮件，常用于实现系统的邮件通知等功能。
 - **mybatis - spring - boot - starter**：如果项目使用 MyBatis 作为持久层框架，可添加该依赖，用于整合 MyBatis 和 Spring Boot，方便配置和使用 MyBatis。
+- **spring-boot-starter-redis** 
 
 22、如何自定义实现一个starter？
 > 答案：自定义实现一个Spring Boot Starter通常可按以下步骤进行：
