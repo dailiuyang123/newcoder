@@ -102,22 +102,58 @@ Spring Bean的生命周期是指从Bean的定义开始，经过实例化、属�
 8. **模板方法模式**：Spring中的JdbcTemplate、HibernateTemplate等都使用了模板方法模式，将一些固定的流程封装在父类中，子类只需实现一些抽象方法，便可完成特定的数据库操作等功能。
 9. **责任链模式**：Spring AOP通过责任链模式实现通知（Advice）的调用，确保通知按顺序执行。此外，Spring中的过滤器和拦截器也采用了责任链模式，多个过滤器和拦截器按照一定顺序执行，可对请求或响应进行拦截和处理。
 
-Spring Boot 面试题
+## Spring Boot 面试题
+
 1、什么是 Spring Boot？
+> 答案：Spring Boot是一个基于Java的开源框架，旨在简化Spring应用程序的配置和引导过程，使开发者能够更快捷地构建独立运行的应用程序。
+
+spring.io网站对其官方定义为：“Spring Boot让创建独立的、生产级的基于Spring的应用程序变得容易，并且可以直接运行”。它具有以下核心特点：
+- **自动配置**：Spring Boot能根据类路径中的依赖和环境，自动配置Spring应用程序，减少开发者手动配置的工作量。
+- **独立运行**：应用可以打包成JAR文件并独立运行，内置了如Tomcat、Jetty等服务器，无需依赖外部应用服务器。
+- **生产就绪**：具备内置的监控、健康检查及外部配置等功能，使应用能够在生产环境中平稳运行。
+- **简化依赖管理**：通过Spring Boot Starter简化依赖管理和版本控制，开发者只需引入相关的Starter，即可自动包含所需的依赖项。
+
+
 2、Spring Boot 有哪些优点？
+> 答案:Spring Boot具有诸多优点，主要包括简化配置、快速开发、支持微服务等，具体如下：
+1. **简化配置**：Spring Boot会根据项目中的依赖自动配置数据源、日志、Web容器等，无需开发者进行繁琐的手动配置。同时，使用`application.properties`或`application.yml`作为默认配置文件，开发者可按需定制，减少了XML配置的使用。
+2. **独立运行**：支持多种嵌入式服务器，如Tomcat、Jetty等。应用程序可打包成可执行的JAR文件，直接通过`java -jar myapp.jar`命令运行，无需外部部署环境，且可在任何支持Java的平台上运行，可移植性强。
+3. **开箱即用**：提供一系列的Starter POMs，一键引入常用的Spring模块和其他第三方库，无需手动添加多个依赖。还提供如Spring Initializr等快速启动模板，可快速生成项目结构和基本配置。
+4. **生产就绪**：Actuator模块提供多种生产就绪功能，可通过HTTP请求访问`/health`、`/metrics`等端点，获取应用程序的健康状态、性能指标等。同时支持外部化配置，可将配置信息存储在外部文件、环境变量或云配置中心中，便于在不同环境使用不同配置。
+5. **易于测试**：Spring Boot Test模块提供了许多便捷的注解和工具，如`@SpringBootTest`注解可启动完整的Spring应用上下文用于集成测试，`@MockBean`和`@Autowired`注解可帮助模拟和注入依赖对象，方便进行单元测试和集成测试。
+6. **社区支持和生态系统丰富**：拥有庞大的开发者社区和丰富的文档资源，遇到问题易找到解决方案。与Spring框架和Spring Cloud项目深度集成，可轻松集成各种Spring模块和其他第三方库，构建复杂应用程序。
+7. **性能优化**：通过优化类加载和依赖管理，应用程序启动速度快。且通常内存占用小、CPU使用率低，适合在资源受限环境中运行，可有效降低运行成本。
+8. **云原生支持**：与AWS、Google Cloud等多种云平台深度集成，支持云原生开发和部署。结合Spring Cloud项目，可实现服务发现、配置管理等功能，助力构建高度可扩展和弹性的微服务架构。
+9. **微服务支持良好**：集成了Spring Cloud生态系统，提供了诸如服务注册与发现、负载均衡、断路器等微服务相关功能的支持，简化了微服务的开发和部署。
+10. **支持热部署**：支持热部署功能，开发者修改代码后无需重新启动应用即可立即生效，提高了开发效率。
+
+
 3、什么是 JavaConfig？
+
 4、如何重新加载 Spring Boot 上的更改，而无需重新启动服务器？
+
 5、Spring Boot 中的监视器是什么？
+
 6、如何在 Spring Boot 中禁用 Actuator 端点安全性？
+
 7、如何在自定义端口上运行 Spring Boot 应用程序？
+
 8、什么是 YAML？
+
 9、如何实现 Spring Boot 应用程序的安全性？
+
 10、如何集成 Spring Boot 和 ActiveMQ？
+
 11、如何使用 Spring Boot 实现分页和排序？
+
 12、什么是 Swagger？你用 Spring Boot 实现了它吗？
+
 13、什么是 Spring Profiles？
+
 14、什么是 Spring Batch？
+
 15、什么是 FreeMarker 模板？
+
 16、如何使用 Spring Boot 实现异常处理？
 > 答案:在Spring Boot中可通过全局异常处理和局部异常处理两种方式实现异常处理，具体如下：
 - **全局异常处理**：通常使用`@ControllerAdvice`注解来实现，该注解能使类成为全局异常处理器，捕获并处理整个应用程序中的异常。配合`@ExceptionHandler`注解可定义特定异常的处理逻辑。示例代码如下：
@@ -327,3 +363,48 @@ com.example.my.starter.MyStarterAutoConfiguration
 my.starter.property1=value1
 my.starter.property2=true
 ```
+
+
+
+#### spring 与 spring boot 的区别
+> 答案:Spring 和 Spring Boot 并非对立关系，Spring Boot 是基于 Spring 框架的扩展和简化，两者的核心区别主要体现在设计目标、使用方式和功能定位上，具体如下：
+
+
+### 1. **设计目标不同**
+- **Spring**：是一个全面的企业级开发框架，核心是 IoC（控制反转）和 AOP（面向切面编程），提供了丰富的模块（如 Spring Core、Spring MVC、Spring JDBC 等），旨在解决企业级应用开发中的复杂性（如依赖管理、事务控制等）。但其配置繁琐，需要手动整合各种模块和第三方库。
+- **Spring Boot**：目标是“简化 Spring 应用开发”，通过“自动配置”“ Starter 依赖”等机制，消除 Spring 应用中重复的手动配置，让开发者能够快速搭建和运行 Spring 应用，专注于业务逻辑而非框架配置。
+
+
+### 2. **配置方式不同**
+- **Spring**：依赖大量 XML 配置或注解 + XML 混合配置，例如：
+  - 定义 Bean 需要在 XML 中编写 `<bean>` 标签；
+  - 整合 Spring MVC 需配置 `DispatcherServlet`、视图解析器等；
+  - 数据源、事务管理等均需手动配置。
+- **Spring Boot**：采用“约定优于配置”原则，默认零 XML 配置，主要通过以下方式简化配置：
+  - **自动配置**：根据类路径中的依赖（如引入 `spring-boot-starter-web` 会自动配置 Tomcat、Spring MVC 等）；
+  - **注解驱动**：使用 `@SpringBootApplication` 一键开启自动配置和包扫描；
+  - **外部化配置**：通过 `application.properties` 或 `application.yml` 集中管理配置（如端口、数据源等）。
+
+
+### 3. **依赖管理不同**
+- **Spring**：需要手动引入各个模块的依赖，并严格控制版本兼容性（例如 Spring Core、Spring MVC、Spring JDBC 需保持版本一致），否则可能出现冲突。
+- **Spring Boot**：通过 **Starter 依赖** 简化依赖管理，例如：
+  - 引入 `spring-boot-starter-web` 会自动包含 Spring MVC、Tomcat、Jackson 等相关依赖；
+  - 基于 `spring-boot-starter-parent` 统一管理依赖版本，无需手动指定版本号，避免版本冲突。
+
+
+### 4. **部署方式不同**
+- **Spring**：传统 Spring 应用需打包为 WAR 文件，部署到外部 Web 容器（如 Tomcat、Jetty）中运行。
+- **Spring Boot**：默认支持 **嵌入式服务器**（Tomcat、Jetty 等），应用可打包为可执行 JAR 文件，直接通过 `java -jar` 命令运行，无需外部容器，简化部署流程。
+
+
+### 5. **功能定位不同**
+- **Spring**：是基础框架，提供了核心的 IoC、AOP 等功能，以及丰富的扩展模块（如 Spring Security、Spring Data 等），适用于构建复杂的企业级应用，但需要手动整合各模块。
+- **Spring Boot**：不是对 Spring 功能的增强，而是对 Spring 开发流程的“简化工具”，内置了 Spring 的核心功能，并提供了自动配置、生产就绪特性（如监控、健康检查）等，更适合快速开发独立运行的应用（尤其是微服务）。
+
+
+### 总结
+- **Spring 是基础**：提供核心功能，是 Spring Boot 的底层依赖。
+- **Spring Boot 是简化工具**：基于 Spring，通过自动配置和 Starter 依赖减少开发工作量，让 Spring 应用更易于创建和运行。
+
+简单来说：**使用 Spring 开发需要“手动搭骨架”，而 Spring Boot 则是“自动搭好骨架，开发者只需填肉”**。
